@@ -1,6 +1,6 @@
 # Homemade Bags
 
-HomemadeBags is a one-of-a-kind e-commerce web application which sells and showcases a variety of eco-friendly bags made from different kinds of sustainable materials, like used clothes and paper.
+This repository contains code for the frontend part of the homemade bags application, which is created using Angular. The application has a single page that allows users to enter the items they want to buy. Then, a list of those items and their prices is displayed.
 
 ## Development server
 
@@ -8,7 +8,7 @@ Run `npm install` && `ng serve` for a dev server. Navigate to `http://localhost:
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -16,4 +16,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Contribute
 
-If you wanna contribute with this project, just fork it, create a new branch with your modification and submit a pull request.
+If you wanna contribute to this project, just fork it, create a new branch with your modification, and submit a pull request.
