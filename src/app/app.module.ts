@@ -1,3 +1,4 @@
+import { ProductCardService } from './shared/product-card.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,7 +10,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 @NgModule({
   declarations: [AppComponent, ProductCardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [ProductCardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

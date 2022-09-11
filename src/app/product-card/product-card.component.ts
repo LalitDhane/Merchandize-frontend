@@ -1,4 +1,7 @@
+
+import { ProductCardService } from './../shared/product-card.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-product-card',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  constructor() { }
+  products: any;
+  constructor(private productService:ProductCardService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.productService.getProducts().subscribe(
+      res => {this.products = res},
+      )
   }
 
 }
