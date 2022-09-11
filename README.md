@@ -2,6 +2,8 @@
 
 This repository contains code for the frontend part of the homemade bags application, which is created using Angular. The application has a single page that allows users to enter the items they want to buy. Then, a list of those items and their prices is displayed.
 
+## Live Demo
+<a href = "https://homemade-bags-frontend.vercel.app/">Click Here</a>
 ## Development server
 
 Run `npm install` && `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
