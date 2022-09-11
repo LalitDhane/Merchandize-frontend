@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProductCardService {
-  url: string = 'http://localhost:3001/api/products';
+  url: string = 'https://homemadebags-production.up.railway.app/api/products';
   constructor(private httpClient: HttpClient) {}
   
   public getProducts(){
