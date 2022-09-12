@@ -10,10 +10,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ProductCardComponent, LoginComponent, SignupComponent, CartComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,FontAwesomeModule],
+  declarations: [
+    AppComponent,
+    ProductCardComponent,
+    LoginComponent,
+    SignupComponent,
+    CartComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    ReactiveFormsModule
+  ],
   providers: [ProductCardService],
   bootstrap: [AppComponent],
 })

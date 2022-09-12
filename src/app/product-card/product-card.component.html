@@ -9,7 +9,7 @@
             *ngIf="product.price > product.specialPrice"
             >{{ product.discountPercentage }}% OFF</span
           >
-          <img [src]="product.imagePath" style="height: 10rem"/>
+          <img [src]="product.imagePath" style="height: 10rem" />
           <div class="d-flex justify-content-center mt-3">
             <strong>{{ product.name }}</strong>
           </div>
@@ -26,7 +26,7 @@
               >{{ product.specialPrice | currency: "INR" }}</b
             >
           </div>
-          <button class="btn btn-primary">Add to Cart</button>
+          <button class="btn btn-success">Add to Cart</button>
         </div>
       </div>
     </ng-container>
