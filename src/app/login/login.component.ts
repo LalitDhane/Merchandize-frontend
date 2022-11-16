@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm?:FormGroup;
-  constructor(private fb:FormBuilder) { }
+  loginForm?:UntypedFormGroup;
+  constructor(private fb:UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
