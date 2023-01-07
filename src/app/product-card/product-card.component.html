@@ -26,7 +26,7 @@
               >{{ product.specialPrice | currency: "INR" }}</b
             >
           </div>
-          <button class="btn btn-success">Add to Cart</button>
+          <button class="btn btn-success" (click)="addToCart(product)">Add to Cart</button>
         </div>
       </div>
     </ng-container>
