@@ -1,36 +1,42 @@
 <div class="container mt-5">
-    <div class="column">
-        <!-- <ng-container *ngFor="let item of cartProductList">
-            <div class="row">
-                <div class="product">
-                    <img [src]="item.imagePath" height="50px" width="50px"/>
-                    <b>{{item.name}}</b>
-                    <b>{{item.price}}</b>
-                    <button class="btn btn-danger" (click)="removeProduct(item)">Delete</button>
-                </div>
-            </div>
-        </ng-container> -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col"> </th>
-                    <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <ng-container *ngFor="let item of cartProductList">
-                    <tr>
-                        <td><img [src]="item.imagePath" height="50px" width="50px"/></td>
-                        <td>{{item.name}}</td>
-                        <td></td>
-                        <td><button class="btn btn-danger" (click)="removeProduct(item)">Delete</button></td>
-                        <td>{{item.price | currency: "INR" }}</td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
-    </div>
+  <div class="column">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col"></th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of cartProductList">
+          <tr>
+            <td><img [src]="item.imagePath" height="50px" width="50px" /></td>
+            <td>{{ item.name }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="increaseQuantity(item)">
+                +
+              </button>
+              {{ item.quantity }}
+              <button class="btn btn-primary" (click)="decreaseQuantity(item)">
+                -
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="removeProduct(item)">
+                Delete
+              </button>
+            </td>
+            <td>{{ item.specialPrice * item.quantity | currency : "INR" }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <b style="float: right"
+      >SubTotal &nbsp; : &nbsp; {{ subTotal | currency : "INR" }}</b
+    >
+  </div>
+  <button class="btn btn-success" (click) = "checkOut()">Checkout</button>
 </div>

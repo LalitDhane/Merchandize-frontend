@@ -1,5 +1,6 @@
 
 export interface Product {
+    _id:string
     code : number;
     name : string;
     description : string;
@@ -7,4 +8,5 @@ export interface Product {
     specialPrice : number;
     discountPercentage : number;
     imagePath : string;
+    quantity: number;
 }
