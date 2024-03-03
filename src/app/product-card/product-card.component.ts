@@ -9,16 +9,20 @@ import { CartService } from '../shared/cart.service';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
-  products?: Product[];
-  constructor(private productService: ProductCardService, 
-    private cartService : CartService) {}
+  public products?: Product[];
+  public loading: boolean = true;
+  constructor(
+    private productService: ProductCardService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((res) => {
       this.products = res;
+      this.loading = false;
     });
   }
-  addToCart(product:Product) {
+  addToCart(product: Product) {
     this.cartService.addProduct(product);
   }
 }

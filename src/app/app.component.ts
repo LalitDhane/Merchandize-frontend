@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { CartService } from './shared/cart.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  cartIcon = faCartShopping;
-  title = 'Homemade-Bags';
+  public cartIcon = faCartShopping;
+  public title = 'Homemade-Bags';
+  public cartCount$?: Subject<number>;
+  constructor(private cartService: CartService) {
+    this.cartCount$ = cartService.cartCount$;
+  }
 }

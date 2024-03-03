@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../Models/Product';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cartProductList: Product[] = JSON.parse(localStorage.getItem("CartProductList") || "[]");
+  public cartProductList: Product[] = JSON.parse(
+    localStorage.getItem('CartProductList') || '[]'
+  );
+  public cartCount$: Subject<number> = new Subject<number>();
   checkOutValueObject = {
-    subTotal :  0,
-    cartSize : 0,
-    shippingCharges : 0,
-    isCheckedOut:false
+    subTotal: 0,
+    cartSize: 0,
+    shippingCharges: 0,
+    isCheckedOut: false,
   };
-  constructor() {
-  }
+  constructor() {}
 
   getProducts(): Product[] {
     return this.cartProductList;
   }
-  
-  findAndGetProductIndex(product:Product) {
+
+  findAndGetProductIndex(product: Product) {
     return this.cartProductList.findIndex(
       (element) => element._id === product._id
     );
@@ -32,6 +35,7 @@ export class CartService {
     } else {
       product.quantity = 1;
       this.cartProductList.push(product);
+      this.cartCount$.next(this.cartProductList.length);
     }
   }
 
@@ -39,39 +43,48 @@ export class CartService {
     this.cartProductList.forEach((element, index) => {
       if (element._id === product._id) this.cartProductList.splice(index, 1);
     });
+    this.cartCount$.next(this.cartProductList.length);
   }
 
   getCartProductList() {
     return this.cartProductList;
   }
 
-  increaseQuantity(product:Product) {
+  increaseQuantity(product: Product) {
     const productIndex = this.findAndGetProductIndex(product);
     this.cartProductList[productIndex].quantity++;
   }
 
-  decreaseQuantity(product:Product) {
+  decreaseQuantity(product: Product) {
     const productIndex = this.findAndGetProductIndex(product);
-    if(this.cartProductList[productIndex].quantity > 1)
+    if (this.cartProductList[productIndex].quantity > 1)
       this.cartProductList[productIndex].quantity--;
   }
 
   updateLocalStorage() {
-    localStorage.setItem("CartProductList",JSON.stringify(this.cartProductList));
+    localStorage.setItem(
+      'CartProductList',
+      JSON.stringify(this.cartProductList)
+    );
   }
 
   getCheckOutValueObject() {
-    return JSON.parse(localStorage.getItem("CheckOutValueObject") || "{}");
+    return JSON.parse(localStorage.getItem('CheckOutValueObject') || '{}');
   }
 
   updateAndReturnCheckOutValueObject() {
     this.checkOutValueObject.subTotal = 0;
     this.cartProductList?.forEach((product) => {
-      this.checkOutValueObject.subTotal += product.specialPrice * product.quantity;
+      this.checkOutValueObject.subTotal +=
+        product.specialPrice * product.quantity;
     });
     this.checkOutValueObject.cartSize = this.cartProductList.length;
-    this.checkOutValueObject.shippingCharges = this.checkOutValueObject.subTotal * 0.05;
-    localStorage.setItem("CheckOutValueObject",JSON.stringify(this.checkOutValueObject));
+    this.checkOutValueObject.shippingCharges =
+      this.checkOutValueObject.subTotal * 0.05;
+    localStorage.setItem(
+      'CheckOutValueObject',
+      JSON.stringify(this.checkOutValueObject)
+    );
     return this.checkOutValueObject;
   }
 }
