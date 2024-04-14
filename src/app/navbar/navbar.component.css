@@ -1,0 +1,7 @@
+.cart-count {
+  z-index: 1;
+  width: 27px;
+  position: relative;
+  left: 45px;
+  bottom: 15px;
+}

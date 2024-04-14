@@ -1,92 +1,93 @@
+<app-navbar></app-navbar>
 <ng-container *ngIf="!isCartEmpty">
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Name</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container *ngFor="let item of cartProductList">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <table class="table">
+          <thead>
             <tr>
-              <td>
-                <img [src]="item.imagePath" height="50px" width="50px" />
-              </td>
-              <td>{{ item.name }}</td>
-              <td>
-                <button
-                  class="btn btn-primary"
-                  (click)="increaseQuantity(item)"
-                >
-                  +
-                </button>
-                {{ item.quantity }}
-                <button
-                  class="btn btn-primary"
-                  (click)="decreaseQuantity(item)"
-                >
-                  -
-                </button>
-              </td>
-              <td>
-                {{ item.specialPrice * item.quantity | currency : "INR" }}
-              </td>
-              <td>
-                <fa-icon
-                  [icon]="deleteIcon"
-                  [styles]="{ color: 'red', cursor: 'pointer' }"
-                  size="lg"
-                  (click)="removeProduct(item)"
-                ></fa-icon>
-              </td>
+              <th scope="col">Product</th>
+              <th scope="col">Name</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col"></th>
             </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-      <table class="table" style="text-align: center; margin-top: 30px;">
-        <thead>
-          <tr>
-            <b>Order Summary</b>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <b
-              >SubTotal :
-              {{ checkOutValueObject.subTotal | currency : "INR" }}</b
-            >
-          </tr>
-          <tr>
-            <b
-              >ShippingCharges :
-              {{ checkOutValueObject.shippingCharges | currency : "INR" }}</b
-            >
-          </tr>
-          <tr>
-            <b
-              >Total :
-              {{
-                checkOutValueObject.subTotal +
-                  checkOutValueObject.shippingCharges | currency : "INR"
-              }}</b
-            >
-          </tr>
-          <tr>
-            <button class="btn btn-success" style="background-color: #198754;">
-              Checkout
-            </button>
-          </tr>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let item of cartProductList">
+              <tr>
+                <td>
+                  <img [src]="item.imagePath" height="50px" width="50px" />
+                </td>
+                <td>{{ item.name }}</td>
+                <td>
+                  <button
+                    class="btn btn-primary"
+                    (click)="increaseQuantity(item)"
+                  >
+                    +
+                  </button>
+                  {{ item.quantity }}
+                  <button
+                    class="btn btn-primary"
+                    (click)="decreaseQuantity(item)"
+                  >
+                    -
+                  </button>
+                </td>
+                <td>
+                  {{ item.specialPrice * item.quantity | currency : "INR" }}
+                </td>
+                <td>
+                  <fa-icon
+                    [icon]="deleteIcon"
+                    [styles]="{ color: 'red', cursor: 'pointer' }"
+                    size="lg"
+                    (click)="removeProduct(item)"
+                  ></fa-icon>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <table class="table" style="text-align: center; margin-top: 30px">
+          <thead>
+            <tr>
+              <b>Order Summary</b>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <b
+                >SubTotal :
+                {{ checkOutValueObject.subTotal | currency : "INR" }}</b
+              >
+            </tr>
+            <tr>
+              <b
+                >ShippingCharges :
+                {{ checkOutValueObject.shippingCharges | currency : "INR" }}</b
+              >
+            </tr>
+            <tr>
+              <b
+                >Total :
+                {{
+                  checkOutValueObject.subTotal +
+                    checkOutValueObject.shippingCharges | currency : "INR"
+                }}</b
+              >
+            </tr>
+            <tr>
+              <button class="btn btn-success" style="background-color: #198754">
+                Checkout
+              </button>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </ng-container>
