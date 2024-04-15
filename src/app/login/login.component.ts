@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   public isLoginFailed: boolean = false;
-  public loginMessage!: string;
+  public loginErrorMessage!: string;
+  public loginSuccessMessage!: string;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -28,13 +29,14 @@ export class LoginComponent implements OnInit {
   public onSubmit(loginForm: FormGroup): void {
     this.userService.loginUser(loginForm.value).subscribe({
       next: (loginResponse: UserApiResponse) => {
-        if (loginResponse.status === 'success') {
-          this.isLoginFailed = false;
-          this.router.navigateByUrl('/home');
-        } else {
-          this.isLoginFailed = true;
-          this.loginMessage = loginResponse.message;
-        }
+        this.isLoginFailed = false;
+        this.loginSuccessMessage = loginResponse.message;
+        this.router.navigateByUrl('/home');
+      },
+      error: (err) => {
+        this.isLoginFailed = true;
+        this.loginErrorMessage = err.error.message;
+        console.log(err);
       },
     });
   }
