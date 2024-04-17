@@ -8,25 +8,70 @@
             <h3 class="mb-4 text-center">Sign Up</h3>
 
             <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm)">
-              <div class="form-outline mb-4">
+              <div class="form-outline mt-4">
                 <label class="form-label" for="typeEmailX-2">Username</label>
                 <input
                   type="text"
                   id="typeEmailX-2"
                   class="form-control form-control-lg"
                   formControlName="username"
+                  [ngClass]="{
+                    'is-invalid':
+                      signUpForm.controls['username'].invalid &&
+                      (signUpForm.controls['username'].touched ||
+                        signUpForm.controls['username'].dirty)
+                  }"
                 />
               </div>
-              <div class="form-outline mb-4">
+              <div
+                class="text-danger"
+                *ngIf="
+                  signUpForm.controls['username'].invalid &&
+                  (signUpForm.controls['username'].touched ||
+                    signUpForm.controls['username'].dirty)
+                "
+              >
+                <div
+                  *ngIf="signUpForm.controls['username'].errors?.['required']"
+                >
+                  Username is required.
+                </div>
+              </div>
+              <div class="form-outline mt-4">
                 <label class="form-label" for="typePasswordX-2">Password</label>
                 <input
                   type="password"
                   id="typePasswordX-2"
                   class="form-control form-control-lg"
                   formControlName="password"
+                  [ngClass]="{
+                    'is-invalid':
+                      signUpForm.controls['password'].invalid &&
+                      (signUpForm.controls['password'].touched ||
+                        signUpForm.controls['password'].dirty)
+                  }"
                 />
               </div>
-              <div class="form-outline mb-4">
+              <div
+                class="text-danger"
+                *ngIf="
+                  signUpForm.controls['password'].invalid &&
+                  (signUpForm.controls['password'].touched ||
+                    signUpForm.controls['password'].dirty)
+                "
+              >
+                <div
+                  *ngIf="signUpForm.controls['password'].errors?.['required']"
+                >
+                  Password is required.
+                </div>
+                <div
+                  *ngIf="signUpForm.controls['password'].errors?.['minlength']"
+                >
+                  Password should be minimum 8 characters long.
+                </div>
+              </div>
+              <div class="form-outline mt-4">
                 <label class="form-label" for="typePasswordX-2"
                   >Confirm Password</label
                 >
@@ -35,9 +80,40 @@
                   id="typePasswordX-2"
                   class="form-control form-control-lg"
                   formControlName="confirmPassword"
+                  [ngClass]="{
+                    'is-invalid':
+                      signUpForm.controls['confirmPassword'].invalid &&
+                      (signUpForm.controls['confirmPassword'].touched ||
+                        signUpForm.controls['confirmPassword'].dirty)
+                  }"
                 />
               </div>
-              <div class="mb-2">
+              <div
+                class="text-danger"
+                *ngIf="
+                  signUpForm.controls['confirmPassword'].invalid &&
+                  (signUpForm.controls['confirmPassword'].touched ||
+                    signUpForm.controls['confirmPassword'].dirty)
+                "
+              >
+                <div
+                  *ngIf="signUpForm.controls['confirmPassword'].errors?.['required']"
+                >
+                  Confirm Password is required.
+                </div>
+                <div
+                  *ngIf="signUpForm.controls['confirmPassword'].errors?.['minlength']"
+                >
+                  Confirm Password should be minimum 8 characters long.
+                </div>
+                <div
+                  *ngIf="
+                    signUpForm.controls['confirmPassword'].value !==
+                    signUpForm.controls['password'].value
+                  "
+                ></div>
+              </div>
+              <div class="mt-2">
                 <p>
                   already have an account? &nbsp;&nbsp;
                   <a routerLink="/login">Login</a>
