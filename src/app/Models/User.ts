@@ -9,4 +9,9 @@ interface UserApiResponse {
   message: string;
 }
 
-export { User, UserApiResponse };
+interface UserDetails {
+  username: string;
+  isLoggedIn: boolean;
+}
+
+export { User, UserApiResponse, UserDetails };

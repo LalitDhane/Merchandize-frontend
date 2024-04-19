@@ -29,8 +29,13 @@
         <fa-icon [icon]="userIcon" [styles]="{ color: 'white' }" size="lg">
         </fa-icon>
         <span class="user">
-          {{ user }}
+          {{ userDetails.username }}
         </span>
+      </div>
+      <div *ngIf="onHomePage || onCartPage">
+        <button type="button" class="btn btn-primary" (click)="onLogOut()">
+          Logout
+        </button>
       </div>
     </div>
   </div>

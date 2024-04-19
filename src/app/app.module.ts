@@ -27,9 +27,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [ProductCardService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

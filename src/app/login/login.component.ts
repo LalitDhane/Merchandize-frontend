@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../shared/user.service';
-import { UserApiResponse } from '../Models/User';
+import { UserApiResponse, UserDetails } from '../Models/User';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
@@ -13,7 +13,10 @@ export class LoginComponent implements OnInit {
   public isLoginFailed: boolean = false;
   public loginErrorMessage!: string;
   public loginSuccessMessage!: string;
-  public user?: string;
+  public userDetails: UserDetails = {
+    username: '',
+    isLoggedIn: false,
+  };
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -32,8 +35,9 @@ export class LoginComponent implements OnInit {
       next: (loginResponse: UserApiResponse) => {
         this.isLoginFailed = false;
         this.loginSuccessMessage = loginResponse.message;
-        this.user = loginResponse.data[0];
-        localStorage.setItem('user', this.user);
+        this.userDetails.username = loginResponse.data[0];
+        this.userDetails.isLoggedIn = true;
+        localStorage.setItem('userDetails', JSON.stringify(this.userDetails));
         this.router.navigateByUrl('/home');
       },
       error: (err) => {
