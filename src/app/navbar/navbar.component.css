@@ -8,3 +8,7 @@
 .navbar-expand-lg .navbar-collapse {
   justify-content: flex-end;
 }
+.user {
+  color: white;
+  margin-left: 10px;
+}

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public isLoginFailed: boolean = false;
   public loginErrorMessage!: string;
   public loginSuccessMessage!: string;
+  public user?: string;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -31,6 +32,8 @@ export class LoginComponent implements OnInit {
       next: (loginResponse: UserApiResponse) => {
         this.isLoginFailed = false;
         this.loginSuccessMessage = loginResponse.message;
+        this.user = loginResponse.data[0];
+        localStorage.setItem('user', this.user);
         this.router.navigateByUrl('/home');
       },
       error: (err) => {
