@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../Models/Product';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,9 @@ export class CartService {
   public cartProductList: Product[] = JSON.parse(
     localStorage.getItem('CartProductList') || '[]'
   );
-  public cartCount$: Subject<number> = new Subject<number>();
+  public cartCount$: BehaviorSubject<number> = new BehaviorSubject<number>(
+    this.cartProductList.length
+  );
   checkOutValueObject = {
     subTotal: 0,
     cartSize: 0,

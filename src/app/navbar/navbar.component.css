@@ -5,3 +5,6 @@
   left: 45px;
   bottom: 15px;
 }
+.navbar-expand-lg .navbar-collapse {
+  justify-content: flex-end;
+}
