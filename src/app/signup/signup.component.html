@@ -107,11 +107,10 @@
                   Confirm Password should be minimum 8 characters long.
                 </div>
                 <div
-                  *ngIf="
-                    signUpForm.controls['confirmPassword'].value !==
-                    signUpForm.controls['password'].value
-                  "
-                ></div>
+                  *ngIf="signUpForm.controls['confirmPassword'].errors?.['missMatch']"
+                >
+                  Password and Confirm Password should be same.
+                </div>
               </div>
               <div class="mt-2">
                 <p>
@@ -119,7 +118,11 @@
                   <a routerLink="/login">Login</a>
                 </p>
               </div>
-              <button class="btn btn-primary btn-lg btn-block" type="submit">
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                type="submit"
+                [disabled]="signUpForm.invalid"
+              >
                 SignUp
               </button>
               <div *ngIf="isSignUpSuccessfully" class="mt-2 text-success">
