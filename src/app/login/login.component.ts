@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     username: '',
     isLoggedIn: false,
   };
+  public loading: boolean = false;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(loginForm: FormGroup): void {
+    this.loading = true;
     this.userService.loginUser(loginForm.value).subscribe({
       next: (loginResponse: UserApiResponse) => {
         this.isLoginFailed = false;
@@ -39,11 +41,12 @@ export class LoginComponent implements OnInit {
         this.userDetails.isLoggedIn = true;
         localStorage.setItem('userDetails', JSON.stringify(this.userDetails));
         this.router.navigateByUrl('/home');
+        this.loading = false;
       },
       error: (err) => {
         this.isLoginFailed = true;
         this.loginErrorMessage = err.error.message;
-        console.log(err);
+        this.loading = false;
       },
     });
   }

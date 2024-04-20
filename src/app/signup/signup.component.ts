@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
   public signUpForm!: FormGroup;
   public isSignUpSuccessfully: boolean = false;
   public signUpSuccessMessage!: string;
+  public loading: boolean = false;
   constructor(private fb: FormBuilder, private userservice: UserService) {}
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class SignupComponent implements OnInit {
   }
 
   public onSubmit(signUpForm: FormGroup): void {
+    this.loading = true;
     const userCredentials: User = {
       username: signUpForm.value.username,
       password: signUpForm.value.confirmPassword,
@@ -38,10 +40,12 @@ export class SignupComponent implements OnInit {
       next: (userSignInResponse: UserApiResponse) => {
         this.isSignUpSuccessfully = true;
         this.signUpSuccessMessage = userSignInResponse.message;
+        this.loading = false;
       },
       error: (err) => {
         this.isSignUpSuccessfully = false;
         console.log(err);
+        this.loading = false;
       },
     });
   }

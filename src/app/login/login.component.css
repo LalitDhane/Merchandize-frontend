@@ -1,0 +1,15 @@
+.spinner-center {
+  position: relative;
+  top: 48%;
+  left: 50%;
+  z-index: 2;
+}
+
+.spinner-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  opacity: 0.3;
+  position: absolute;
+  z-index: 1;
+}
