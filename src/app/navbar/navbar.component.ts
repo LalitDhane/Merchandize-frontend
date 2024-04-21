@@ -13,7 +13,7 @@ import { UserDetails } from '../Models/User';
 export class NavbarComponent implements OnInit {
   public cartIcon = faCartShopping;
   public userIcon = faUser;
-  public title = 'Homemade-Bags';
+  public title = 'Merchandize';
   public cartCount$?: BehaviorSubject<number>;
   public onHomePage: boolean = false;
   public onCartPage: boolean = false;
