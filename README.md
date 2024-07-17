@@ -4,7 +4,7 @@ Browse millions of products, compare prices, and checkout securely - all in one 
 
 ## Live Demo
 
-<a href = "https://homemade-bags-frontend.vercel.app/">Click Here</a>
+<a href = "https://merchandize-frontend-7jhb-qs4axs76d-lalits-projects-ffc82317.vercel.app/">Click Here</a>
 
 ## Development server
 
