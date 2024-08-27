@@ -6,6 +6,9 @@ Browse millions of products, compare prices, and checkout securely - all in one 
 
 <a href = "https://merchandize-frontend-7jhb-qs4axs76d-lalits-projects-ffc82317.vercel.app/">Click Here</a>
 
+## Backend Repo
+<a href = "https://github.com/LalitDhane/Merchandize-backend"> Merchandize Backend </a>
+
 ## Development server
 
 Run `npm install` && `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
